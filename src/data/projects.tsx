@@ -257,7 +257,7 @@ const projects: Project[] = [
               Exciting projects are on the way!
             </p>
             <p className="text-lg text-gray-500 dark:text-gray-500 font-mono max-w-2xl mx-auto">
-              I'm currently working on some amazing projects that will be showcased here soon.
+              I&apos;m currently working on some amazing projects that will be showcased here soon.
               Stay tuned for updates!
             </p>
             <div className="flex gap-2 justify-center mt-8">
@@ -292,7 +292,7 @@ const projects: Project[] = [
               Building something extraordinary!
             </p>
             <p className="text-lg text-gray-500 dark:text-gray-500 font-mono max-w-2xl mx-auto">
-              Great things take time. I'm crafting innovative solutions that will make a difference.
+              Great things take time. I&apos;m crafting innovative solutions that will make a difference.
             </p>
             <div className="flex gap-2 justify-center mt-8">
               <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
@@ -326,7 +326,7 @@ const projects: Project[] = [
               More projects on the horizon!
             </p>
             <p className="text-lg text-gray-500 dark:text-gray-500 font-mono max-w-2xl mx-auto">
-              I'm constantly learning and building. Check back soon to see what I've been working on!
+              I&apos;m constantly learning and building. Check back soon to see what I&apos;ve been working on!
             </p>
             <div className="flex gap-2 justify-center mt-8">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
