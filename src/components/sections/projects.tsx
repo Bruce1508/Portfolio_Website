@@ -53,7 +53,7 @@ const ProjectsSection = () => {
             {/* Description with enhanced readability */}
             <p className="text-lg md:text-xl text-gray-800 dark:text-gray-100 max-w-2xl mx-auto font-mono animate-fade-in-delay leading-relaxed"
                style={{ textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)' }}>
-              I'm currently working on some exciting projects that will showcase my skills and creativity.
+              I&apos;m currently working on some exciting projects that will showcase my skills and creativity.
               Stay tuned for updates!
             </p>
 

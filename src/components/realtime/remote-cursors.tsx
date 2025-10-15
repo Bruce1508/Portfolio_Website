@@ -39,6 +39,7 @@ const RemoteCursors = () => {
     return () => {
       socket.off("cursor-changed");
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket, isMobile]);
   const handleMouseMove = useThrottle((x, y) => {
     socket?.emit("cursor-change", {
@@ -49,6 +50,7 @@ const RemoteCursors = () => {
   useEffect(() => {
     if (isMobile) return;
     handleMouseMove(x, y);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [x, y, isMobile]);
   const users = Array.from(_users.values());
   return (
@@ -111,6 +113,7 @@ const Cursor = ({
         // setShowText(false);
       }, timeToRead);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [msgs]);
 
   return (

@@ -118,10 +118,12 @@ const FloatingDockDesktop = ({
     } else {
       controls.stop();
     }
+    const currentTimer = timer.current;
     return () => {
       controls.stop();
-      clearInterval(timer.current);
+      if (currentTimer) clearInterval(currentTimer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showHint]);
   return (
     <div className="relative h-fit flex items-center justify-center">

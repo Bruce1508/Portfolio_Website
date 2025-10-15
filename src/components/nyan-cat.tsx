@@ -77,6 +77,7 @@ const AnimatedDiv = ({
       y: randY,
       transition: { duration: 5, ease: "linear" },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controls]);
 
   const handlePause = () => {
@@ -91,6 +92,7 @@ const AnimatedDiv = ({
       onAnimationComplete={onCompleted}
       onClick={handlePause}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/assets/nyan-cat.gif"
         className={cn("fixed z-10 h-40 w-auto")}

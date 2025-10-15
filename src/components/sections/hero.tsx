@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "../ui/button";
 import { File, Github, Linkedin, Mail, Sparkles, Code2, Rocket, Coffee } from "lucide-react";
 import {
@@ -17,12 +17,12 @@ import { config } from "@/data/config";
 const HeroSection = () => {
   const { isLoading } = usePreloader();
   const [typedText, setTypedText] = useState("");
-  const roles = [
+  const roles = useMemo(() => [
     "Full Stack Developer",
     "Software Engineer",
     "Frontend Developer",
     "Backend Developer"
-  ];
+  ], []);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -235,7 +235,7 @@ const HeroSection = () => {
               {/* Action Buttons */}
               <div className="mt-12 md:ml-3 flex flex-col gap-4 w-full md:w-auto">
                 <div className="flex flex-wrap gap-4 items-center">
-                  <BoxReveal delay={2} width="auto">
+                  <BoxReveal delay={2} width="fit-content">
                     <Tooltip delayDuration={300}>
                       <TooltipTrigger asChild>
                         <Link href={"#contact"}>
@@ -244,12 +244,12 @@ const HeroSection = () => {
                             className="group bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 border-0 text-white font-bold shadow-lg hover:shadow-xl hover:shadow-purple-500/50 transition-all duration-200 px-8 py-6 text-base rounded-xl"
                           >
                             <Mail size={20} className="mr-2 group-hover:rotate-12 transition-transform duration-200" />
-                            <span>Let's Connect</span>
+                            <span>Let&apos;s Connect</span>
                           </Button>
                         </Link>
                       </TooltipTrigger>
                       <TooltipContent side="bottom" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 font-semibold">
-                        <p>Let's build something amazing! ✨</p>
+                        <p>Let&apos;s build something amazing! ✨</p>
                       </TooltipContent>
                     </Tooltip>
                   </BoxReveal>
@@ -268,7 +268,7 @@ const HeroSection = () => {
                     </Link>
                   </BoxReveal> */}
 
-                  <BoxReveal delay={2.2} width="auto">
+                  <BoxReveal delay={2.2} width="fit-content">
                     <Tooltip delayDuration={300}>
                       <TooltipTrigger asChild>
                         <Link href={config.social.github} target="_blank">
@@ -287,7 +287,7 @@ const HeroSection = () => {
                     </Tooltip>
                   </BoxReveal>
 
-                  <BoxReveal delay={2.4} width="auto">
+                  <BoxReveal delay={2.4} width="fit-content">
                     <Tooltip delayDuration={300}>
                       <TooltipTrigger asChild>
                         <Link href={config.social.linkedin} target="_blank">

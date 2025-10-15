@@ -18,6 +18,7 @@ function SmoothScroll({ children, isInsideModal = false }: LenisProps) {
       lenis?.stop();
       lenis?.start();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
