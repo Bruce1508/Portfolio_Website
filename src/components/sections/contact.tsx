@@ -28,25 +28,33 @@ const ContactSection = () => {
         </h2>
       </Link>
       <div className="grid grid-cols-1 md:grid-cols-2 z-[9999]">
-        <Card className="min-w-7xl bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl mt-10 md:mt-20">
-          <CardHeader>
-            <CardTitle className="text-4xl">Contact Form</CardTitle>
-            <CardDescription>
-              Please contact me directly at{" "}
-              <a
-                target="_blank"
-                href={`mailto:${config.email}`}
-                className="text-gray-200 cursor-can-hover rounded-lg"
-              >
-                {config.email.replace(/@/g, "(at)")}
-              </a>{" "}
-              or drop your info here.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ContactForm />
-          </CardContent>
-        </Card>
+        <div className="relative group mt-10 md:mt-20">
+          {/* Glowing background effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition duration-500 animate-pulse" />
+
+          {/* Card with enhanced styling */}
+          <Card className="relative min-w-7xl bg-white/80 dark:bg-black/80 backdrop-blur-lg rounded-2xl border-2 border-purple-500/20 shadow-2xl">
+            <CardHeader className="space-y-2">
+              <CardTitle className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500">
+                Contact Form
+              </CardTitle>
+              <CardDescription className="text-base text-gray-700 dark:text-gray-300">
+                Please contact me directly at{" "}
+                <a
+                  target="_blank"
+                  href={`mailto:${config.email}`}
+                  className="text-purple-600 dark:text-purple-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors font-semibold cursor-pointer rounded-lg"
+                >
+                  {config.email.replace(/@/g, "(at)")}
+                </a>{" "}
+                or drop your info here.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ContactForm />
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   );
