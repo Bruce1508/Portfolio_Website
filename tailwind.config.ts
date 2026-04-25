@@ -22,6 +22,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        mono: ["var(--font-mono)", "JetBrains Mono", "Courier New", "monospace"],
+        display: ["var(--font-display)", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

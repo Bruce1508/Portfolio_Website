@@ -102,7 +102,7 @@ const ContactForm = () => {
       </div>
       <Button
         disabled={loading}
-        className="w-full text-white rounded-lg h-12 font-semibold text-lg bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-purple-500/50 group/btn"
+        className="w-full rounded-sm h-12 font-mono font-semibold text-base tracking-wide transition-all duration-200 group/btn"
         type="submit"
       >
         {loading ? (
@@ -136,11 +136,3 @@ const LabelInputContainer = ({
   );
 };
 
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-brand to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent orange-400 to-transparent" />
-    </>
-  );
-};

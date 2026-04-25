@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-
 import { cn } from "@/lib/utils";
 import { ReactNode, useEffect, useRef } from "react";
 
-interface BlurIntProps {
+const EASE_OUT_QUART: [number, number, number, number] = [0.25, 1, 0.5, 1];
+
+interface BlurInProps {
   children: ReactNode;
   className?: string;
   delay?: number;
@@ -20,27 +21,24 @@ export const BlurIn = ({
   className,
   variant,
   delay = 0,
-  duration = 1,
-}: BlurIntProps) => {
+  duration = 0.7,
+}: BlurInProps) => {
   const defaultVariants = {
-    hidden: { filter: "blur(10px)", opacity: 0 },
+    hidden: { filter: "blur(8px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
   };
   const combinedVariants = variant || defaultVariants;
 
   return (
-    <motion.h1
+    <motion.div
       initial="hidden"
       animate="visible"
-      transition={{ duration, delay }}
+      transition={{ duration, delay, ease: EASE_OUT_QUART }}
       variants={combinedVariants}
-      className={cn(
-        className
-        // "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
-      )}
+      className={cn(className)}
     >
       {children}
-    </motion.h1>
+    </motion.div>
   );
 };
 
@@ -56,7 +54,7 @@ export const BoxReveal = ({
   children,
   width = "fit-content",
   boxColor,
-  duration,
+  duration = 0.5,
   delay,
   once = true,
 }: BoxRevealProps) => {
@@ -80,12 +78,12 @@ export const BoxReveal = ({
     <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 75 },
+          hidden: { opacity: 0, y: 30 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: duration ? duration : 0.5, delay }}
+        transition={{ duration, delay, ease: EASE_OUT_QUART }}
       >
         {children}
       </motion.div>
@@ -97,11 +95,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{
-          duration: duration ? duration : 0.5,
-          ease: "easeIn",
-          delay,
-        }}
+        transition={{ duration, ease: EASE_OUT_QUART, delay }}
         style={{
           position: "absolute",
           top: 4,
@@ -109,9 +103,37 @@ export const BoxReveal = ({
           left: 0,
           right: 0,
           zIndex: 20,
-          background: boxColor ? boxColor : "#ffffff00",
+          background: boxColor ?? "#ffffff00",
         }}
       />
     </div>
+  );
+};
+
+interface ScrollRevealProps {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+  yOffset?: number;
+}
+export const ScrollReveal = ({
+  children,
+  delay = 0,
+  className,
+  yOffset = 20,
+}: ScrollRevealProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: yOffset }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: yOffset }}
+      transition={{ duration: 0.5, delay, ease: EASE_OUT_QUART }}
+    >
+      {children}
+    </motion.div>
   );
 };

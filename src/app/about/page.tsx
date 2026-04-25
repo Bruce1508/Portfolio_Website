@@ -40,29 +40,25 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { TbTerminal2 } from "react-icons/tb";
 
+import { config as siteConfig } from "@/data/config";
+
 const CONTACT_LINKS = [
   {
     name: "Email",
-    content: "naresh.khatri2345@gmail",
-    href: "mailto:naresh.khatri2345@gmail.com",
+    content: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
     icon: <FaEnvelope height={"50px"} />,
   },
   {
-    name: "Phone",
-    content: "1234567890",
-    href: "tel:1234567890",
-    icon: <FaPhone height={"50px"} />,
-  },
-  {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/naresh-khatri/",
-    content: "/naresh-khatri",
+    href: siteConfig.social.linkedin,
+    content: "/brucevo",
     icon: <FaLinkedin height={"50px"} />,
   },
   {
     name: "GitHub",
-    href: "https://github.com/Naresh-Khatri",
-    content: "/naresh-khatri",
+    href: siteConfig.social.github,
+    content: "/Bruce1508",
     icon: <FaGithub height={"50px"} />,
   },
 ];
@@ -233,44 +229,39 @@ function Page() {
     setToolsLoaded(true);
   }, []);
   return (
-    <div className="container mx-auto px-4 md:px-[50px] xl:px-[200px] text-zinc-300 pt-20 pb-20">
+    <div className="container mx-auto px-4 md:px-[50px] xl:px-[200px] text-foreground pt-20 pb-20">
       <div className="flex flex-col lg:flex-row gap-5">
         <aside className="w-full md:basis-1/4">
-          <div
-            className="p-4 md:p-8 lg:p-10 rounded-2xl border-[.5px] border-zinc-600"
-            style={{
-              backdropFilter: "blur(2px)",
-            }}
-          >
+          <div className="p-4 md:p-8 lg:p-10 border border-border bg-card">
             <div className="flex flex-row lg:flex-col items-center">
-              <div className="flex justify-center items-center lg:w-full lg:aspect-square bg-zinc-800 rounded-xl lg:mb-5">
+              <div className="flex justify-center items-center lg:w-full lg:aspect-square bg-muted lg:mb-5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  className="rounded-full p-4 lg:p-10 w-[100px] md:w-[150px] lg:w-[200px] aspect-square  bg-zinc-800"
+                  className="p-4 lg:p-10 w-[100px] md:w-[150px] lg:w-[200px] aspect-square"
                   alt="me"
                   src="/assets/me.jpg"
                 />
               </div>
               <div className="flex flex-col gap-3 lg:items-center ml-10 md:ml-20 lg:ml-0">
-                <p className="text-center text-xl">Naresh Khatri</p>
-                <div className="text-xs bg-zinc-700 w-fit px-3 py-1 rounded-full">
-                  Web Developer
+                <p className="text-center text-xl font-black">{siteConfig.author}</p>
+                <div className="text-xs font-mono bg-[var(--brand)]/10 text-[var(--brand)] border border-[var(--brand)]/30 w-fit px-3 py-1 uppercase tracking-widest">
+                  Full-Stack Engineer
                 </div>
               </div>
             </div>
             <div className="hidden lg:block">
-              <hr className="my-10 border-zinc-600" />
-              <ul className="flex flex-col gap-3">
+              <hr className="my-8 border-border" />
+              <ul className="flex flex-col gap-2">
                 {CONTACT_LINKS.map((link) => (
                   <li key={link.name}>
                     <a
-                      className="flex items-center px-3 gap-3 w-full h-12 border-zinc-700 bg-zinc-800 hover:border-zinc-600 border-[.5px] rounded-md "
+                      className="flex items-center px-3 gap-3 w-full h-11 border border-border bg-background hover:border-[var(--brand)]/40 hover:bg-[var(--brand)]/5 transition-colors"
                       href={link.href}
                     >
-                      <div className="w-8">{link.icon}</div>
+                      <div className="w-5 text-muted-foreground">{link.icon}</div>
                       <div className="flex flex-col">
-                        <div className="text-sm">{link.name}</div>
-                        <div className="text-xs text-zinc-500">
+                        <div className="text-xs font-mono font-semibold text-foreground uppercase tracking-wide">{link.name}</div>
+                        <div className="text-xs font-mono text-muted-foreground truncate max-w-[140px]">
                           {link.content}
                         </div>
                       </div>
@@ -281,25 +272,21 @@ function Page() {
             </div>
           </div>
         </aside>
-        <main className="basis-3/4 w-[500px]">
-          <div
-            className="p-10 border-[.5px] rounded-md border-zinc-600"
-            style={{ backdropFilter: "blur(2px)" }}
-          >
-            <h1 className="text-3xl mb-10 lg:md-20">About me</h1>
-            <p className="mb-10 text-roboto">
-              Hey there! I&apos;m Naresh, a Fullstack developer passionate about
-              creating meaningful digital experiences. With great in Web
-              development, I thrive on turning ideas into reality through coding
-              and design. My journey began with a fascination for technology and
-              a drive to make a positive impact.
+        <main className="basis-3/4 w-full">
+          <div className="p-8 md:p-10 border border-border bg-card">
+            <h1 className="text-3xl font-black tracking-tight mb-8">About me</h1>
+            <p className="mb-6 text-muted-foreground leading-relaxed">
+              Hey, I&apos;m {siteConfig.author} — a full-stack software engineer
+              focused on building web applications that are fast, scalable, and
+              maintainable. I enjoy working across the stack, from designing
+              clean APIs to building polished UIs.
             </p>
-            <p className="mb-10">
-              When I&apos;m not coding, you can find me [Your
-              Interests/Hobbies], exploring new technologies, or sipping coffee
-              while brainstorming my next project.
+            <p className="mb-8 text-muted-foreground leading-relaxed">
+              When I&apos;m not coding, I&apos;m probably tinkering with mechanical
+              keyboards, exploring new tools, or getting distracted by an
+              interesting side project.
             </p>
-            <h1 className="text-3xl mb-10 lg:md-20">Stuff I use</h1>
+            <h2 className="text-3xl font-black tracking-tight mb-8">Stuff I use</h2>
             <div className="mb-5">
               {!toolsLoaded ? (
                 <p className="h-[100px]"></p>
@@ -323,7 +310,7 @@ function Page() {
                     <SplideSlide key={tool.name}>
                       <div
                         key={tool.name}
-                        className="w-fit p-2 border-[.5px] border-zinc-600 rounded-md"
+                        className="w-fit p-2 border border-border hover:border-[var(--brand)]/40 transition-colors"
                       >
                         {tool.icon}
                       </div>
@@ -332,34 +319,6 @@ function Page() {
                 </Splide>
               )}
             </div>
-            {/* <div className="">
-              <Splide
-                options={{
-                  type: "loop",
-                  interval: 2000,
-                  autoplay: true,
-                  pagination: false,
-                  speed: 3000,
-                  perPage: 5,
-                  perMove: 1,
-                  rewind: true,
-                  easing: "cubic-bezier(0.25, 1, 0.5, 1)",
-                  arrows: false,
-                }}
-                aria-label="My Favorite Images"
-              >
-                {TOOLS.map((tool) => (
-                  <SplideSlide key={tool.name}>
-                    <div
-                      key={tool.name}
-                      className="w-fit p-2 border-[.5px] border-zinc-600 rounded-md"
-                    >
-                      {tool.icon}
-                    </div>
-                  </SplideSlide>
-                ))}
-              </Splide>
-            </div> */}
           </div>
         </main>
       </div>
