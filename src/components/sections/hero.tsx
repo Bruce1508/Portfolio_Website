@@ -37,19 +37,23 @@ const TerminalHero = () => {
   useEffect(() => {
     if (isLoading) return;
     let i = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
     const id = setInterval(() => {
       i++;
       setTyped(COMMAND.slice(0, i));
       if (i >= COMMAND.length) {
         clearInterval(id);
-        setTimeout(() => setCmdDone(true), 300);
+        timeoutId = setTimeout(() => setCmdDone(true), 300);
       }
     }, 80);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      clearTimeout(timeoutId);
+    };
   }, [isLoading]);
 
   return (
-    <div className="font-mono text-sm leading-relaxed select-none" aria-hidden>
+    <div className="font-mono text-sm leading-relaxed select-none" aria-hidden="true">
       {/* Command line with typewriter cursor */}
       <div className="flex items-center gap-2">
         <span className="text-[var(--brand)]">❯</span>
