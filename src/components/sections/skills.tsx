@@ -119,7 +119,7 @@ const SkillsSection = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.18 }}
               >
-                hover a skill · or press a key on your keyboard
+                hover a skill to explore
               </motion.p>
             )}
           </AnimatePresence>
