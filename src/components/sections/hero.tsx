@@ -15,6 +15,88 @@ import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
+import { motion } from "framer-motion";
+
+const COMMAND = "npx create-bruce-vo";
+
+const LINES: { id: string; content: string; colorClass: string; delay: number }[] = [
+  { id: "l1", content: "  ▸ installing skills...",               colorClass: "text-muted-foreground/30", delay: 0 },
+  { id: "l2", content: "  ✔ next.js 14 · react 18 · typescript", colorClass: "text-green-400",          delay: 0.15 },
+  { id: "l3", content: "  ✔ node.js · express · postgresql",     colorClass: "text-green-400",          delay: 0.30 },
+  { id: "l4", content: "  ✔ docker · aws · linux",               colorClass: "text-green-400",          delay: 0.45 },
+  { id: "l5", content: "  ▸ configuring personality...",          colorClass: "text-muted-foreground/30", delay: 0.85 },
+  { id: "l6", content: "  ★ seeking internship · open to work",  colorClass: "text-yellow-400",         delay: 1.05 },
+  { id: "l7", content: "  ready in 0.02s",                       colorClass: "text-green-400",          delay: 1.35 },
+];
+
+const TerminalHero = () => {
+  const { isLoading } = usePreloader();
+  const [typed, setTyped] = useState("");
+  const [cmdDone, setCmdDone] = useState(false);
+
+  useEffect(() => {
+    if (isLoading) return;
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      setTyped(COMMAND.slice(0, i));
+      if (i >= COMMAND.length) {
+        clearInterval(id);
+        setTimeout(() => setCmdDone(true), 300);
+      }
+    }, 80);
+    return () => clearInterval(id);
+  }, [isLoading]);
+
+  return (
+    <div className="font-mono text-sm leading-relaxed select-none" aria-hidden>
+      {/* Command line with typewriter cursor */}
+      <div className="flex items-center gap-2">
+        <span className="text-[var(--brand)]">❯</span>
+        <span className="text-foreground">{typed}</span>
+        {!cmdDone && (
+          <motion.span
+            animate={{ opacity: [1, 1, 0, 0] }}
+            transition={{ duration: 0.8, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}
+            className="inline-block w-[7px] h-[14px] bg-[var(--brand)]"
+          />
+        )}
+      </div>
+
+      {/* Subsequent lines — each with its own delay */}
+      {cmdDone && (
+        <>
+          {LINES.map((line) => (
+            <motion.div
+              key={line.id}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: line.delay, duration: 0.18, ease: "easeOut" }}
+              className={line.colorClass}
+            >
+              {line.content}
+            </motion.div>
+          ))}
+
+          {/* Idle blinking cursor */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.6, duration: 0.18 }}
+            className="flex items-center gap-2"
+          >
+            <span className="text-[var(--brand)]">❯</span>
+            <motion.span
+              animate={{ opacity: [1, 1, 0, 0] }}
+              transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}
+              className="inline-block w-[7px] h-[14px] bg-[var(--brand)]"
+            />
+          </motion.div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -75,7 +157,6 @@ const HeroSection = () => {
             "flex flex-col justify-center items-center md:items-start",
             "px-6 sm:px-10 md:pl-16 lg:pl-24 xl:pl-32",
             "w-full md:w-1/2",
-            // Subtle amber left-border — structural anchor on desktop
             "md:border-l-2 border-[var(--brand)]/20"
           )}
         >
@@ -200,6 +281,11 @@ const HeroSection = () => {
               </div>
             </div>
           )}
+        </div>
+
+        {/* right panel — desktop only */}
+        <div className="hidden md:flex w-1/2 h-full items-center justify-center px-16">
+          <TerminalHero />
         </div>
       </div>
 
