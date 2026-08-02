@@ -6,67 +6,9 @@ import { config } from "@/data/config";
 import { ScrollReveal } from "../reveal-animations";
 import { ArrowUpRight } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import {
-  RiNextjsFill,
-  RiNodejsFill,
-} from "react-icons/ri";
-import {
-  SiTypescript,
-  SiTailwindcss,
-  SiThreedotjs,
-  SiFramer,
-  SiPostgresql,
-  SiExpress,
-  SiDocker,
-  SiMongodb,
-} from "react-icons/si";
+import projects, { type Project, type TechBadge } from "@/data/projects";
 
-type TechBadge = { label: string; icon: React.ReactNode };
-type Project = {
-  num: string;
-  category: string;
-  title: string;
-  description: string;
-  tech: TechBadge[];
-  live?: string;
-  github?: string;
-  wip?: boolean;
-};
-
-const PROJECTS: Project[] = [
-  {
-    num: "01",
-    category: "Full-Stack · Interactive",
-    title: "Portfolio Website",
-    description:
-      "An interactive developer portfolio featuring a 3D mechanical keyboard built with Spline, section transitions powered by GSAP ScrollTrigger, and a contact form backed by the Resend API.",
-    tech: [
-      { label: "Next.js", icon: <RiNextjsFill /> },
-      { label: "TypeScript", icon: <SiTypescript /> },
-      { label: "Tailwind", icon: <SiTailwindcss /> },
-      { label: "Spline", icon: <SiThreedotjs /> },
-      { label: "Framer Motion", icon: <SiFramer /> },
-    ],
-    live: config.site,
-    github: config.social.github,
-  },
-  {
-    num: "02",
-    category: "Full-Stack · Backend",
-    title: "More Projects",
-    description:
-      "Additional projects are being assembled and will appear here soon. In the meantime, browse GitHub to see what else is in progress.",
-    tech: [
-      { label: "Node.js", icon: <RiNodejsFill /> },
-      { label: "Express", icon: <SiExpress /> },
-      { label: "PostgreSQL", icon: <SiPostgresql /> },
-      { label: "Docker", icon: <SiDocker /> },
-      { label: "MongoDB", icon: <SiMongodb /> },
-    ],
-    github: config.social.github,
-    wip: true,
-  },
-];
+const FEATURED = projects.filter((p) => p.featured);
 
 const TechPill = ({ label, icon }: TechBadge) => (
   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-border text-xs font-mono text-muted-foreground">
@@ -124,7 +66,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
           target="_blank"
           className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--brand)] hover:underline"
         >
-          Live site
+          {project.liveLabel ?? "Live site"}
           <ArrowUpRight size={13} />
         </Link>
       )}
@@ -173,7 +115,7 @@ const ProjectsSection = () => {
 
       {/* Project grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {PROJECTS.map((project, i) => (
+        {FEATURED.map((project, i) => (
           <ScrollReveal key={project.num} delay={i * 0.1}>
             <ProjectCard project={project} />
           </ScrollReveal>
