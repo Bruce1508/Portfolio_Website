@@ -39,7 +39,11 @@ All portfolio content is centralized here — edit these files to update what di
 
 - `config.ts` — site metadata, author info, social links, email, deployed URL
 - `constants.ts` — `SKILLS` record (keyed by `SkillNames` enum) and `themeDisclaimers` strings
-- `projects.tsx` — project data including descriptions, screenshots, tech stack icons, and links
+- `projects.tsx` — **the single source of truth for projects.** Both the homepage
+  section (`components/sections/projects.tsx`, which renders `projects.filter(p => p.featured)`)
+  and the `/projects` route read from it. Adding a project means editing this file only.
+  Screenshots go in `public/assets/projects-screenshots/<slug>/`; leaving `images: []`
+  is supported and simply hides the carousel on `/projects`.
 
 ### Component Organization
 
