@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { resumeSkillGroups } from "@/data/resume";
 import { Code2, Database, Network, Cloud, ChevronDown } from "lucide-react";
-import { SiJavascript, SiTypescript, SiPython, SiReact, SiHtml5, SiCss3, SiAngular, SiNodedotjs, SiExpress, SiGraphql, SiMysql, SiPostgresql, SiMongodb, SiPrisma, SiJest, SiDocker, SiGit, SiGithubactions, SiLinux, SiJira, SiOpenapi, SiCplusplus } from "react-icons/si";
+import { SiJavascript, SiTypescript, SiPython, SiReact, SiHtml5, SiCss3, SiAngular, SiNodedotjs, SiExpress, SiGraphql, SiMysql, SiPostgresql, SiMongodb, SiPrisma, SiJest, SiDocker, SiGit, SiGithubactions, SiLinux, SiJira, SiCplusplus } from "react-icons/si";
 import type { IconType } from "react-icons";
 const icons: Record<string, IconType> = {
   JavaScript: SiJavascript, TypeScript: SiTypescript, Python: SiPython,
@@ -11,7 +11,7 @@ const icons: Record<string, IconType> = {
   GraphQL: SiGraphql, MySQL: SiMysql, PostgreSQL: SiPostgresql, MongoDB: SiMongodb,
   "Prisma ORM": SiPrisma, "Jest (Unit & Integration)": SiJest, Docker: SiDocker,
   Git: SiGit, "GitHub Actions": SiGithubactions, "Linux (CLI)": SiLinux, Jira: SiJira,
-  OpenAPI: SiOpenapi, "C/C++": SiCplusplus,
+ "C/C++": SiCplusplus,
 };
 const labels = ["Exploring", "Occasionally", "Sometimes", "Often", "Daily"];
 const contexts: Record<string, string> = {
