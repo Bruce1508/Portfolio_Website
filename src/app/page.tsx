@@ -1,3 +1,4 @@
+import { places } from "@/data/places";
 import OrganizationLogo from "@/components/portfolio/organization-logo";
 import Link from "next/link";
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
@@ -10,10 +11,11 @@ export default function Home() {
       <section className="intro">
         <div className="intro-copy">
           <h1>Bruce Vo.</h1>
-          <p className="intro-role">Software engineer.</p>
+          <p className="intro-role">Software engineer.<br />Curious beyond the code.</p>
           <p className="intro-description">
-            I build web applications and local AI tools. My work explores how
-            software can explain data, simplify coursework, and help us learn.
+            I’m a Software Development student at Seneca, building web apps and
+            local AI tools in Toronto. {places.filter(place => place.role === "Hacker").length} hackathons so far,
+            with Hack The North up next. Away from the keyboard: pool and football.
           </p>
           <div className="intro-links">
             <Link className="button" href="/projects">
@@ -49,10 +51,10 @@ export default function Home() {
             <ArrowUpRight size={15} />
           </a>
         </div>
-        <Portrait />
+        <div className="intro-portrait"><Portrait /></div>
       </section>
       <section className="currently" aria-labelledby="currently-title">
-        <h2 id="currently-title">Currently</h2>
+        <h2 id="currently-title">Work & education</h2>
         <div className="currently-items">
           <Link href="/experience" className="current-item">
             <OrganizationLogo name={education.school} />

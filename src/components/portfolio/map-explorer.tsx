@@ -9,7 +9,10 @@ export default function MapExplorer() {
   const container = useRef<HTMLDivElement>(null);
   const markers = useRef<{ button: HTMLButtonElement; ids: string[] }[]>([]);
   const map = useRef<mapboxgl.Map | null>(null);
-  const [selected, setSelected] = useState(places[0]?.id);
+  const [selected, setSelected] = useState(() => {
+    const requested = typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("place") : null;
+    return places.find(place => place.id === requested)?.id ?? places[0]?.id;
+  });
   const [status, setStatus] = useState("Loading the map…");
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const active = places.find((p) => p.id === selected);
