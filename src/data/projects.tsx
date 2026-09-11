@@ -1,10 +1,14 @@
 import React from "react";
 import { config } from "@/data/config";
-import { Cpu } from "lucide-react";
+import { Cpu, Map } from "lucide-react";
 import { RiNextjsFill } from "react-icons/ri";
 import {
   SiFastapi,
-  SiFramer,
+  SiReact,
+  SiJavascript,
+  SiNodedotjs,
+  SiJest,
+  SiGithubactions,
   SiGooglegemini,
   SiPlaywright,
   SiPostgresql,
@@ -12,7 +16,6 @@ import {
   SiPython,
   SiSqlite,
   SiTailwindcss,
-  SiThreedotjs,
   SiTypescript,
 } from "react-icons/si";
 
@@ -21,11 +24,12 @@ export type TechBadge = { label: string; icon: React.ReactNode };
 export type Project = {
   /** Stable id. Doubles as the screenshot directory name. */
   slug: string;
-  /** Display order, shown as a large numeral on the card. */
+  /** Stable display order for project listings. */
   num: string;
   category: string;
   title: string;
   description: string;
+  summary: string;
   tech: TechBadge[];
   /** Paths under /assets/projects-screenshots/<slug>/. Empty until captured. */
   images: string[];
@@ -44,6 +48,8 @@ export const projects: Project[] = [
     num: "01",
     category: "AI Agent · Data Systems",
     title: "RootLens",
+    summary:
+      "An AI analyst that explains why a metric moved — with the SQL and evidence to back it up.",
     description:
       "A local-first AI analyst that answers why a business metric moved, not just that it moved. The engine is a bounded script rather than a free-form agent loop: fixed analytics calls feed one LLM decomposition, and the model earns an open-ended move only when a hypothesis stays inconclusive — its single ad hoc query parsed with sqlglot and run under a read-only Postgres role. Every claim cites an evidence id that opens the exact SQL and rows behind it, and a report carrying an unverifiable citation is rejected before it ships.",
     tech: [
@@ -66,6 +72,8 @@ export const projects: Project[] = [
     num: "02",
     category: "Developer Tool · CLI",
     title: "bb-cli",
+    summary:
+      "Your Blackboard coursework, one terminal away. Built for local, private access.",
     description:
       "A terminal client for Blackboard LMS, published on PyPI. Playwright drives a headless browser through an LMS that exposes no public API, caching deadlines, grades, and announcements into a local SQLite database — which you then query in plain English. Inference runs locally through Ollama, so coursework never leaves the machine, and credentials live in the OS keyring rather than a config file.",
     tech: [
@@ -85,8 +93,10 @@ export const projects: Project[] = [
     num: "03",
     category: "Systems Design · AI",
     title: "Linguistic Twin",
+    summary:
+      "A French learning system that learns from your mistakes, then asks you to correct its own.",
     description:
-      "A French learner-modeling system aimed at the TCF Canada exam — a data layer rather than a chatbot. Submissions are parsed into tagged error events that are written once and never edited; the learner profile is a pure recomputation over that event log, not a mutable row. A \"Reverse Tutor\" inverts the usual loop, asking the learner to correct errors the model produced on purpose.",
+      'A French learner-modeling system aimed at the TCF Canada exam — a data layer rather than a chatbot. Submissions are parsed into tagged error events that are written once and never edited; the learner profile is a pure recomputation over that event log, not a mutable row. A "Reverse Tutor" inverts the usual loop, asking the learner to correct errors the model produced on purpose.',
     tech: [
       { label: "Next.js", icon: <RiNextjsFill /> },
       { label: "TypeScript", icon: <SiTypescript /> },
@@ -100,23 +110,58 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "portfolio",
+    slug: "skipclasspro",
     num: "04",
+    category: "Mobile / Student tools",
+    title: "SkipClassPro",
+    summary:
+      "A React Native application with synchronized deadlines and automated reminders for students.",
+    description:
+      "As a Full-Stack Application Developer from May to December 2025, I refactored the Android application with real-time deadline synchronization and push reminders, reducing missed submissions by 90% across 50+ users. Form validation and Jest unit and integration tests improved data consistency by 75%. GitHub Actions build, test, and release pipelines with coverage gates cut post-release defects by 50%.",
+    tech: [
+      { label: "React Native", icon: <SiReact /> },
+      { label: "Jest", icon: <SiJest /> },
+      { label: "GitHub Actions", icon: <SiGithubactions /> },
+    ],
+    images: [],
+    featured: false,
+  },
+  {
+    slug: "cshub",
+    num: "05",
+    category: "Web / Developer education",
+    title: "CSHub",
+    summary:
+      "Repository health dashboards and interactive programming exercises for a developer community.",
+    description:
+      "As a Frontend Web Developer since May 2025, I built a JavaScript, Node.js, and SQL Server application to analyze code quality across 40+ repositories. Interactive components provided real-time syntax feedback for 50+ users learning programming concepts. Jest integration tests and documented test patterns supported reliability within Webpack and npm workflows.",
+    tech: [
+      { label: "JavaScript", icon: <SiJavascript /> },
+      { label: "Node.js", icon: <SiNodedotjs /> },
+      { label: "SQL Server", icon: <Cpu /> },
+      { label: "Jest", icon: <SiJest /> },
+    ],
+    images: [],
+    featured: false,
+  },
+  {
+    slug: "portfolio",
+    num: "06",
     category: "Full-Stack · Interactive",
     title: "Portfolio Website",
+    summary:
+      "My personal space for software, experiments, and the places along the way.",
     description:
-      "An interactive developer portfolio featuring a 3D mechanical keyboard built with Spline, section transitions powered by GSAP ScrollTrigger, and a contact form backed by the Resend API.",
+      "A personal portfolio built with Next.js, with project write-ups, a Mapbox-powered places explorer, and a contact form backed by the Resend API. The interface keeps reading and navigation simple, loading the interactive map only when opened.",
     tech: [
       { label: "Next.js", icon: <RiNextjsFill /> },
       { label: "TypeScript", icon: <SiTypescript /> },
       { label: "Tailwind", icon: <SiTailwindcss /> },
-      { label: "Spline", icon: <SiThreedotjs /> },
-      { label: "Framer Motion", icon: <SiFramer /> },
+      { label: "Mapbox", icon: <Map /> },
     ],
     images: [],
     live: config.site,
-    github: config.social.github,
-    featured: true,
+    featured: false,
   },
 ];
 
