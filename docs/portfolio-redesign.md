@@ -62,3 +62,16 @@ The portrait uses an SVG displacement filter only during hover/focus/press, sett
 ## About: map-first redesign
 
 About now opens directly into a large live map and event sidebar. Removed the prose biography, duplicate education/skills content, illustrated preview, dialog entry step, and Say hello CTA. All 13 entries remain selectable. Optional `photos` (src/alt/caption) and `reflection` fields render inside the selected event; no personal photos or feelings are invented. Asset instructions live in public/assets/memories/README.md. Desktop/mobile browser checks confirmed selection, 13 entries, removed CTA, and no horizontal overflow; production build and lint passed.
+
+## Skills energy-bar prototype
+
+Skills now retains the résumé's 29 entries in six groups, with technology icons, five-segment frequency bars, and expandable category context. Desktop uses two columns; mobile uses one. Frequency levels are explicitly illustrative, not verified usage or proficiency claims. Replace the prototype level calculation with Bruce-confirmed values before presenting these as actual usage. Browser checks verified all entries, expandable rows, final filled segment colors, and no horizontal overflow at 390px. Production build (including lint/type checks) passed.
+
+## Homepage hackathon emphasis
+
+Hero copy now identifies Seneca studies, Toronto, web/local AI work, eight attended hackathons, one upcoming Hack The North, and pool/football interests. A compact nine-entry hackathon passport links each event directly to its selected map story via ?place=. Incoming is visually distinct. Counts derive from confirmed place roles; no networking events counted as hackathons and no GitHub/token heatmap statistics invented. Desktop/mobile and event selection checks passed; build and lint passed.
+
+
+## Publish cleanup
+
+Removed the homepage hackathon passport and the Portfolio Website project entry at Bruce’s request. Restored Real Fruit to the homepage organization row, labeled Work & education because that role ended January 2026. Experience retains Maple first, Real Fruit ending January 2026, and the user-supplied May 2025 volunteer entry. The portrait and thought bubble remain. Fixed the invalid SiOpenapi import present on main; local production build passes.
