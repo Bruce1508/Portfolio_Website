@@ -1,52 +1,21 @@
 import OrganizationLogo from "./organization-logo";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { HandHeart } from "lucide-react";
 import { experience } from "@/data/resume";
-export default function Experience({ compact = false }: { compact?: boolean }) {
-  const groups = compact
-    ? [{ title: "Work experience", kind: "work" }]
-    : [
-        { title: "Work experience", kind: "work" },
-        { title: "Projects & community", kind: "community" },
-      ];
-  return (
-    <>
-      {groups.map((group) => (
-        <section className="experience-section" key={group.kind}>
-          <div className="section-heading">
-            <h2>{group.title}</h2>
-            {compact && (
-              <Link className="text-link" href="/experience">
-                Full experience
-                <ArrowUpRight size={16} />
-              </Link>
-            )}
-          </div>
-          <div className="experience-list">
-            {experience
-              .filter((item) => item.kind === group.kind)
-              .map((item) => (
-                <article className="experience-entry" key={item.organization}>
-                  <p className="experience-date">{item.period}</p>
-                  <div className="experience-content">
-                    <div className="experience-brand"><OrganizationLogo name={item.organization} /><h3>{item.role}</h3></div>
-                    <p className="experience-org">
-                      {item.organization}
-                      <span>{item.location}</span>
-                    </p>
-                    <ul>
-                      {(compact ? item.points.slice(0, 1) : item.points).map(
-                        (point) => (
-                          <li key={point}>{point}</li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-          </div>
-        </section>
-      ))}
-    </>
-  );
+export default function Experience() {
+  return <div className="career-timeline">
+    {[
+      { title: "Work", kind: "work" },
+      { title: "Volunteering", kind: "volunteer" },
+    ].map(group => <section className="career-group" key={group.kind}>
+      <h2>{group.title}</h2>
+      {experience.filter(item => item.kind === group.kind).map(item => <article className="career-entry" key={item.organization}>
+        <p className="career-date">{item.period}</p>
+        <div className="career-content" data-current={!item.end}>
+          <div className="career-title"><h3>{item.role}</h3><div className="career-logo">{item.kind === "volunteer" ? <HandHeart size={34} aria-hidden="true" /> : <OrganizationLogo name={item.organization} />}</div></div>
+          <p className="career-meta">{item.organization}<span>{item.location}</span>{!item.end && <span className="career-now">Now</span>}</p>
+          <ul>{item.points.map(point => <li key={point}>{point}</li>)}</ul>
+        </div>
+      </article>)}
+    </section>)}
+  </div>;
 }

@@ -6,10 +6,9 @@ export const metadata = { title: "Experience | Bruce Vo" };
 export default function ExperiencePage() {
   return (
     <main id="main" className="wrap page-content">
-      <h1>Experience & education.</h1>
+      <h1>My work experience.</h1>
       <p className="page-lead">
-        Technical operations, application development, and the work behind the
-        software.
+        Data, technical operations, and volunteering in my community.
       </p>
       <div className="detail-links">
         <a className="button" href={resumeUrl} target="_blank" rel="noreferrer">

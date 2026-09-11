@@ -2,19 +2,6 @@
 export const resumeUrl = "/resume/BruceVo_SWE_Intern.pdf";
 export const experience = [
   {
-    organization: "Real Fruit Bubble Tea",
-    role: "Technical Operations Support",
-    location: "Toronto, ON",
-    period: "Sep 2025 — Present",
-    start: "2025-09",
-    kind: "work",
-    points: [
-      "Improved item throughput by 80% by using SQL and Python to analyze 800+ weekly transactions and identify workflow bottlenecks.",
-      "Reduced average customer wait times by 90% during peak hours through operational data analysis and reports presented to leadership.",
-      "Cut remake rates by 95% with categorized error-tracking checklists, weekly data reviews, and standardized preparation steps.",
-    ],
-  },
-  {
     organization: "Maple Photo Imaging",
     role: "Data Analyst",
     location: "Toronto, ON",
@@ -25,6 +12,20 @@ export const experience = [
       "Reduced production incidents by 80% with automated API health checks that surfaced transaction workflow failures before client-facing downtime.",
       "Cut manual verification effort by 50% using Python scripts and SQL queries to validate production transaction data.",
       "Reduced team onboarding time by 50% by writing technical guides and workflow SOPs for key production processes.",
+    ],
+  },
+  {
+    organization: "Real Fruit Bubble Tea",
+    role: "Technical Operations Support",
+    location: "Toronto, ON",
+    period: "Sep 2025 — Jan 2026",
+    end: "2026-01",
+    start: "2025-09",
+    kind: "work",
+    points: [
+      "Improved item throughput by 80% by using SQL and Python to analyze 800+ weekly transactions and identify workflow bottlenecks.",
+      "Reduced average customer wait times by 90% during peak hours through operational data analysis and reports presented to leadership.",
+      "Cut remake rates by 95% with categorized error-tracking checklists, weekly data reviews, and standardized preparation steps.",
     ],
   },
   {
@@ -52,6 +53,16 @@ export const experience = [
       "Improved data consistency by 75% through form validation and Jest unit and integration tests for synchronization and data integrity.",
       "Cut post-release defects by 50% with GitHub Actions pipelines for build, test, and release, including Jest coverage gates.",
     ],
+  },
+  {
+    organization: "Toronto Waterfront Marathon",
+    role: "Volunteer",
+    location: "Toronto, ON",
+    period: "May 2025",
+    start: "2025-05",
+    end: "2025-05",
+    kind: "volunteer",
+    points: ["Volunteered at the Toronto Waterfront Marathon."],
   },
 ];
 export const education = {
