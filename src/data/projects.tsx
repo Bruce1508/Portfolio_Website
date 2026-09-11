@@ -3,6 +3,7 @@ import { config } from "@/data/config";
 import { Cpu } from "lucide-react";
 import { RiNextjsFill } from "react-icons/ri";
 import {
+  SiFastapi,
   SiFramer,
   SiGooglegemini,
   SiPlaywright,
@@ -39,8 +40,30 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "bb-cli",
+    slug: "rootlens",
     num: "01",
+    category: "AI Agent · Data Systems",
+    title: "RootLens",
+    description:
+      "A local-first AI analyst that answers why a business metric moved, not just that it moved. The engine is a bounded script rather than a free-form agent loop: fixed analytics calls feed one LLM decomposition, and the model earns an open-ended move only when a hypothesis stays inconclusive — its single ad hoc query parsed with sqlglot and run under a read-only Postgres role. Every claim cites an evidence id that opens the exact SQL and rows behind it, and a report carrying an unverifiable citation is rejected before it ships.",
+    tech: [
+      { label: "FastAPI", icon: <SiFastapi /> },
+      { label: "Python", icon: <SiPython /> },
+      { label: "PostgreSQL", icon: <SiPostgresql /> },
+      { label: "Next.js", icon: <RiNextjsFill /> },
+      { label: "Ollama", icon: <Cpu /> },
+    ],
+    images: [
+      "/assets/projects-screenshots/rootlens/dashboard.png",
+      "/assets/projects-screenshots/rootlens/investigation.png",
+      "/assets/projects-screenshots/rootlens/evidence.png",
+    ],
+    github: "https://github.com/Bruce1508/RootLens",
+    featured: true,
+  },
+  {
+    slug: "bb-cli",
+    num: "02",
     category: "Developer Tool · CLI",
     title: "bb-cli",
     description:
@@ -59,7 +82,7 @@ export const projects: Project[] = [
   },
   {
     slug: "linguistic-twin",
-    num: "02",
+    num: "03",
     category: "Systems Design · AI",
     title: "Linguistic Twin",
     description:
@@ -78,7 +101,7 @@ export const projects: Project[] = [
   },
   {
     slug: "portfolio",
-    num: "03",
+    num: "04",
     category: "Full-Stack · Interactive",
     title: "Portfolio Website",
     description:
