@@ -40,3 +40,8 @@ next-env.d.ts
 
 # tooling caches
 .serena/
+
+# Local design review evidence
+.playwright-mcp/
+.impeccable/review/
+.impeccable/build/
