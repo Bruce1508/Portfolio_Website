@@ -1,19 +1,15 @@
-import React from "react";
-
-function Page() {
+import Link from "next/link";
+export default function Blog() {
   return (
-    <div className="container mx-auto flex flex-col justify-center items-center min-h-screen gap-3">
-      <p className="text-xs font-mono text-[var(--brand)] uppercase tracking-widest">
-        &#47;&#47; coming soon
+    <main id="main" className="wrap page-content prose-page">
+      <h1>Notes</h1>
+      <p className="page-lead">
+        No posts published yet. In the meantime, explore what I’ve been
+        building.
       </p>
-      <h1 className="text-5xl md:text-7xl font-black text-foreground tracking-tight">
-        No posts yet
-      </h1>
-      <p className="text-sm font-mono text-muted-foreground mt-2">
-        Check back later.
-      </p>
-    </div>
+      <Link href="/projects" className="button">
+        Explore projects
+      </Link>
+    </main>
   );
 }
-
-export default Page;
