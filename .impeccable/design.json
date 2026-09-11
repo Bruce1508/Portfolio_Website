@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-11T07:33:28.169721+00:00",
+  "title": "Design System: Bruce Vo Portfolio",
+  "extensions": {
+    "typographyMeta": {
+      "display": {
+        "displayName": "Name display",
+        "purpose": "Large identity on home."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Project explanations and descriptions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "preview",
+        "value": "0 7px 20px #26332012",
+        "purpose": "Application screenshot depth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-background",
+        "value": "background 0.2s",
+        "purpose": "Primary action hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Respect reduced-motion preferences."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "intermediate",
+        "value": "1000px"
+      },
+      {
+        "name": "stacked",
+        "value": "760px"
+      },
+      {
+        "name": "mobile",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary page action.",
+      "html": "<button class=\"ds-button\">See my work</button>",
+      "css": ".ds-button{font-family:\"Hanken Grotesk Variable\",sans-serif;background:var(--brand,#355e43);color:white;border:1px solid var(--brand,#355e43);border-radius:5px;padding:12px 20px;font-size:14px;font-weight:550;min-height:45px;transition:background .2s}.ds-button:hover{background:#244730}.ds-button:focus-visible{outline:2px solid var(--brand,#355e43);outline-offset:5px}"
+    },
+    {
+      "name": "Text link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Secondary navigation and project links.",
+      "html": "<a class=\"ds-link\" href=\"#\">View all projects</a>",
+      "css": ".ds-link{font-family:\"Hanken Grotesk Variable\",sans-serif;color:#202620;font-size:14px;font-weight:550;text-decoration:none;text-underline-offset:5px}.ds-link:hover{text-decoration:underline}.ds-link:focus-visible{outline:2px solid var(--brand,#355e43);outline-offset:5px}"
+    },
+    {
+      "name": "Contact field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labeled contact input.",
+      "html": "<label class=\"ds-label\">Email address<input class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-label{font-family:\"Hanken Grotesk Variable\",sans-serif;display:grid;gap:8px;font-size:14px}.ds-input{font-family:\"Hanken Grotesk Variable\",sans-serif;border:1px solid #b7c2b0;border-radius:4px;background:white;padding:12px;font-size:16px;caret-color:var(--brand,#355e43)}.ds-input::placeholder{color:#626c60}.ds-input:focus-visible{outline:2px solid var(--brand,#355e43);outline-offset:5px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Visible route links with active underline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\" aria-current=\"page\">Work</a><a href=\"#\">Skills</a></nav>",
+      "css": ".ds-nav{font-family:\"Hanken Grotesk Variable\",sans-serif;display:flex;gap:30px}.ds-nav a{color:#626c60;font-size:14px;padding:12px 0;text-decoration:none}.ds-nav a:hover,.ds-nav a[aria-current]{color:#202620}.ds-nav a[aria-current]{box-shadow:inset 0 -1px #202620}.ds-nav a:focus-visible{outline:2px solid var(--brand,#355e43);outline-offset:5px}"
+    },
+    {
+      "name": "Screenshot selector",
+      "kind": "custom",
+      "refersTo": "preview-selector-selected",
+      "description": "Three pressed-state buttons select actual application views.",
+      "html": "<div class=\"ds-selector\"><button aria-pressed=\"true\">Overview</button><button aria-pressed=\"false\">Investigation</button><button aria-pressed=\"false\">Evidence</button></div>",
+      "css": ".ds-selector{display:flex;gap:3px;background:#edf1e9;padding:8px}.ds-selector button{font-family:\"Hanken Grotesk Variable\",sans-serif;border:0;background:transparent;border-radius:4px;font-size:12px;padding:6px 8px;min-height:32px}.ds-selector button[aria-pressed=true]{background:white;color:#202620}.ds-selector button:hover{background:#ffffffa0}.ds-selector button:focus-visible{outline:2px solid var(--brand,#355e43);outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Real software leads",
+    "overview": "The built portfolio follows the user-approved Aman-inspired professional direction: a light ground, restrained green, generous separation, and direct sans-serif typography. Application imagery and readable project descriptions carry its identity. This records the current implementation, replacing the older Mechanic Noir description as visual guidance.\n\nThe result feels calm and practical. Professional claims are supported by actual work; the interface gives screenshots, project names, and links room to explain that work. The accepted direction lives in `docs/design-direction.md`; content constraints live in `PRODUCT.md`.",
+    "keyCharacteristics": [
+      "Chalk surfaces and moss actions.",
+      "Self-hosted Hanken Grotesk throughout the interface.",
+      "Open project compositions with metadata below titles.",
+      "Skills connected to projects that use them.",
+      "Quiet interaction states and visible keyboard focus."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Color Rule",
+        "body": "Keep global controls moss; allow actual project imagery to preserve its own palette.",
+        "section": "colors"
+      },
+      {
+        "name": "The Title First Rule",
+        "body": "Project titles precede category metadata. An optional in-progress status sits alongside the title, not above it.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do use the self-hosted sans-serif hierarchy and quiet moss actions.",
+      "Do keep project titles above metadata and connect skills to real project use.",
+      "Do retain source-specific colors in actual product imagery.",
+      "Do preserve visible keyboard focus, responsive stacking, and reduced-motion behavior."
+    ],
+    "donts": [
+      "Don't replace the accepted light/green direction with the obsolete dark Mechanic Noir styling.",
+      "Don't add decorative numbered eyebrows, warm serif monograms, or repeated filler copy.",
+      "Don't turn plain project metadata and technology lists into decorative pill collections.",
+      "Don't invent screenshots, r\u00e9sum\u00e9 claims, experience, or personal map locations."
+    ]
+  }
+}
