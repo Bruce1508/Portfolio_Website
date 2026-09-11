@@ -1,6 +1,5 @@
 import React from "react";
-import { config } from "@/data/config";
-import { Cpu, Map } from "lucide-react";
+import { Cpu } from "lucide-react";
 import { RiNextjsFill } from "react-icons/ri";
 import {
   SiFastapi,
@@ -142,25 +141,6 @@ export const projects: Project[] = [
       { label: "Jest", icon: <SiJest /> },
     ],
     images: [],
-    featured: false,
-  },
-  {
-    slug: "portfolio",
-    num: "06",
-    category: "Full-Stack · Interactive",
-    title: "Portfolio Website",
-    summary:
-      "My personal space for software, experiments, and the places along the way.",
-    description:
-      "A personal portfolio built with Next.js, with project write-ups, a Mapbox-powered places explorer, and a contact form backed by the Resend API. The interface keeps reading and navigation simple, loading the interactive map only when opened.",
-    tech: [
-      { label: "Next.js", icon: <RiNextjsFill /> },
-      { label: "TypeScript", icon: <SiTypescript /> },
-      { label: "Tailwind", icon: <SiTailwindcss /> },
-      { label: "Mapbox", icon: <Map /> },
-    ],
-    images: [],
-    live: config.site,
     featured: false,
   },
 ];
