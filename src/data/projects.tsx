@@ -63,6 +63,8 @@ export const projects: Project[] = [
       "/assets/projects-screenshots/rootlens/investigation.png",
       "/assets/projects-screenshots/rootlens/evidence.png",
     ],
+    live: "https://rootlens-demo.vercel.app",
+    liveLabel: "Live demo (read-only)",
     github: "https://github.com/Bruce1508/RootLens",
     featured: true,
   },
